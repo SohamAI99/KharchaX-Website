@@ -1,0 +1,328 @@
+# KharchaX – Design Document
+
+---
+
+## 1. Visual Style & Mood
+
+**Design Style:**
+Modern, minimal, clean, and slightly playful (GenZ-friendly)
+
+**Mood & Feel:**
+
+* Smart
+* Friendly
+* Stress-free
+* Trustworthy
+* Slightly energetic
+
+**Design Philosophy:**
+
+* Keep UI simple → avoid clutter
+* Focus on clarity of numbers and balances
+* Make financial info easy to understand at a glance
+* Use subtle animations for smooth experience
+
+---
+
+## 2. Color Palette
+
+### Primary Colors:
+
+* Primary: #6C5CE7 (Modern Purple – brand identity)
+* Secondary: #00B894 (Fresh Green – success / balance)
+
+### Accent Colors:
+
+* Red (Debt): #FF4D4F
+* Yellow (Warning): #FDCB6E
+* Blue (Info): #0984E3
+
+### Background Colors:
+
+* Light Mode Background: #F8F9FB
+* Dark Mode Background: #0F172A
+
+### Text Colors:
+
+* Primary Text: #1F2937
+* Secondary Text: #6B7280
+* White Text: #FFFFFF
+
+---
+
+## 3. Typography
+
+### Font Family:
+
+* Primary Font: Inter (clean and modern)
+* Backup: system-ui, sans-serif
+
+### Font Sizes:
+
+* H1: 32px (bold)
+* H2: 24px (semi-bold)
+* H3: 18px (medium)
+* Body: 14–16px (regular)
+* Small text: 12px
+
+### Font Weights:
+
+* Bold: 700
+* Medium: 500
+* Regular: 400
+
+---
+
+## 4. Layout & Structure
+
+### Layout Style:
+
+* Centered layout
+* Max width: 1200px
+* Mobile-first responsive design
+
+### Grid System:
+
+* 12-column responsive grid
+
+### Spacing:
+
+* Padding: 16px / 24px
+* Margin between sections: 24px–32px
+* Card spacing: 16px
+
+### Border Radius:
+
+* Small: 8px
+* Medium: 12px
+* Large: 16px
+
+---
+
+## 5. UI Components
+
+### Buttons:
+
+* Rounded (10–12px radius)
+* Primary: Purple background, white text
+* Secondary: Outline style
+* Hover: Slight brightness increase
+* Active: Slight scale down (0.97)
+
+---
+
+### Cards:
+
+* White background (light mode)
+* Dark gray (dark mode)
+* Soft shadow
+* Rounded corners (12px)
+
+Used for:
+
+* Expense items
+* Member cards
+* Summary blocks
+
+---
+
+### Input Fields:
+
+* Rounded corners
+* Light border (#E5E7EB)
+* Focus: purple border highlight
+
+---
+
+### Navigation Bar:
+
+* Fixed top
+* Clean minimal
+* Logo on left (KharchaX)
+* Menu on right
+
+---
+
+### Icons:
+
+* Use simple line icons
+* Style: minimal (Lucide / Heroicons style)
+
+---
+
+## 6. Page-Specific Design
+
+---
+
+### 6.1 Landing Page
+
+**Hero Section:**
+
+* Big bold heading:
+  “Split smart. No drama.”
+* Subtext explaining app
+* CTA button: “Create Group”
+
+**Sections:**
+
+* Features grid (cards)
+* How it works (3 steps)
+* Benefits (AI + fairness)
+
+---
+
+### 6.2 Dashboard Page
+
+**Top Section:**
+
+* Total group expense
+* Remaining balance
+
+**Middle:**
+
+* Cards:
+
+  * “You owe”
+  * “You get”
+
+**Bottom:**
+
+* Recent activity
+
+---
+
+### 6.3 Group Page
+
+**Header:**
+
+* Group name
+* Members
+
+**Main Section:**
+
+* Expense list (cards):
+
+  * Title
+  * Amount
+  * Paid by
+
+**Right / Bottom:**
+
+* Balance summary
+
+---
+
+### 6.4 Add Expense Page
+
+* Clean form layout
+
+* Fields:
+
+  * Amount
+  * Title
+  * Paid by
+  * Split among
+
+* Large “Add Expense” button
+
+---
+
+### 6.5 AI Planner Page
+
+**Input Section:**
+
+* Number of people
+* Budget
+* Mode selector (Trip / Party / Flatmate)
+
+**Output Section:**
+
+* Suggested budget breakdown
+* Tips / alerts
+
+---
+
+### 6.6 Settlement Page
+
+* List of final balances
+
+* Clear instructions:
+
+  * “A pays B ₹XXX”
+
+* Highlight important payments
+
+---
+
+## 7. Animations & Interactions
+
+* Smooth transitions (200–300ms)
+* Card hover lift effect
+* Button click feedback
+* Subtle loading animations
+
+---
+
+## 8. Dark Mode
+
+* Full support required
+* Same layout, darker colors
+* Maintain readability
+
+---
+
+## 9. Responsive Design
+
+### Breakpoints:
+
+* Mobile: < 640px
+* Tablet: 640–1024px
+* Desktop: > 1024px
+
+### Behavior:
+
+* Stack elements vertically on mobile
+* Keep interactions touch-friendly
+
+---
+
+## 10. UX Principles
+
+* Show important numbers clearly
+* Minimize steps to add expense
+* Avoid confusion in balances
+* Use color to indicate:
+
+  * Red = you owe
+  * Green = you get
+
+---
+
+## 11. Design References
+
+Inspiration from:
+
+* Modern fintech apps
+* Expense apps (clean dashboards)
+* Minimal SaaS UI
+
+Style direction:
+
+* Clean like Notion
+* Smooth like modern fintech apps
+* Friendly like GenZ apps
+
+---
+
+## 12. Summary
+
+KharchaX design should feel:
+
+* Simple to use
+* Smart and modern
+* Friendly but not childish
+* Focused on clarity and usability
+
+The goal is to make expense management feel effortless and stress-free.
+
+---

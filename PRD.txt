@@ -1,0 +1,280 @@
+# KharchaX – Product Requirement Document (PRD)
+
+---
+
+## 1. Project Overview
+
+**Project Name:** KharchaX
+**Tagline:** Split smart. No drama.
+
+**Description:**
+KharchaX is an AI-powered group expense management and planning platform designed for modern users (especially GenZ and college groups). It helps users track shared expenses, split costs fairly, and get intelligent suggestions for budgeting, planning, and optimizing group spending in real-world scenarios like trips, parties, and shared living.
+
+**Goal:**
+To simplify group expense management by combining expense tracking with AI-driven insights, reducing confusion, imbalance, and social awkwardness in financial contributions.
+
+---
+
+## 2. Target Audience
+
+### Primary Users:
+
+* College students (age 18–25)
+* Friend groups planning trips or parties
+* Flatmates sharing expenses
+
+### Secondary Users:
+
+* Small teams organizing events
+* Budget-conscious group planners
+
+### User Pain Points:
+
+* Confusion in tracking who paid what
+* Unequal contribution among members
+* Manual calculations and errors
+* Social discomfort while asking for money
+* Poor planning leading to overspending
+
+---
+
+## 3. Core Features
+
+### 3.1 Expense Tracking (Must-have)
+
+* Add expenses with:
+
+  * Title (e.g., Chicken, Farmhouse)
+  * Amount
+  * Paid by (user)
+  * Split among (selected users)
+* Automatic calculation of:
+
+  * Per person share
+  * Who owes whom
+
+---
+
+### 3.2 Smart Split System (Must-have)
+
+* Equal split (default)
+* Custom split (future scope)
+* Real-time balance tracking
+* Summary:
+
+  * “A owes B ₹XXX”
+
+---
+
+### 3.3 Group Management (Must-have)
+
+* Create group (Trip, Party, Flatmates)
+* Add/remove members
+* Share group via link or code
+
+---
+
+### 3.4 AI Budget Planner (Unique Feature – Must-have)
+
+User inputs:
+
+* Number of people
+* Budget
+* Type (Trip / Party / Flatmate)
+
+AI outputs:
+
+* Suggested expense distribution
+* Food quantity estimation (for trips)
+* Budget allocation (stay, food, misc)
+
+---
+
+### 3.5 Fairness Analyzer (Must-have)
+
+* Detects:
+
+  * Overpaying members
+  * Underpaying members
+* Displays:
+
+  * Contribution comparison
+  * Fair share per person
+
+---
+
+### 3.6 Alerts & Notifications (Must-have)
+
+* “Budget exceeded”
+* “One member hasn’t contributed”
+* “Expenses are unbalanced”
+* “Low budget for planned items”
+
+---
+
+### 3.7 Dashboard (Must-have)
+
+Displays:
+
+* Total group expense
+* Individual contributions
+* Pending balances
+* Remaining budget
+
+---
+
+### 3.8 Settlement System (Must-have)
+
+* Final summary:
+
+  * Who pays whom
+* Simplified settlement logic
+* UPI-ready display (manual payment)
+
+---
+
+### 3.9 Mode-Based Intelligence (Unique Feature – Must-have)
+
+#### Modes:
+
+1. Trip Mode
+
+   * Food planning
+   * Stay + travel optimization
+
+2. Party Mode
+
+   * Equal bill splitting
+   * Quick expense tracking
+
+3. Flatmate Mode
+
+   * Recurring expenses
+   * Monthly summaries
+
+---
+
+## 4. Pages Structure
+
+### 1. Landing Page
+
+* App intro
+* Features overview
+* Call to action (Start / Create Group)
+
+---
+
+### 2. Dashboard Page
+
+* Group overview
+* Total expenses
+* Member balances
+
+---
+
+### 3. Group Page
+
+* Expense list
+* Add expense button
+* Members list
+* Split summary
+
+---
+
+### 4. Add Expense Page
+
+* Input fields:
+
+  * Amount
+  * Paid by
+  * Split between
+* Submit button
+
+---
+
+### 5. AI Planner Page
+
+* Input:
+
+  * People count
+  * Budget
+  * Mode
+* Output:
+
+  * Suggested plan
+
+---
+
+### 6. Settlement Page
+
+* Final balances
+* Payment instructions
+
+---
+
+## 5. User Journey
+
+### Step-by-step Flow:
+
+1. User opens KharchaX
+2. Creates a group (e.g., “Goa Trip”)
+3. Adds members
+4. Adds expenses as they occur
+5. System calculates splits automatically
+6. User checks dashboard for balances
+7. AI suggests optimizations (optional)
+8. At end → settlement page shows final payments
+
+---
+
+## 6. Success Metrics
+
+* Number of active groups created
+* Average expenses added per group
+* User retention (return usage)
+* Accuracy of expense split (no disputes)
+* Time saved in settlement process
+* User satisfaction (reduced confusion)
+
+---
+
+## 7. Future Scope (Nice-to-have)
+
+* UPI integration (auto payments)
+* Expense categories & analytics
+* Chat within group
+* Expense receipts upload
+* Mobile app version
+* Multi-currency support
+
+---
+
+## 8. Unique Value Proposition
+
+KharchaX is not just an expense splitter.
+It is a **smart decision assistant** that helps users:
+
+* Plan before spending
+* Track during spending
+* Settle after spending
+
+All while maintaining fairness and simplicity.
+
+---
+
+## 9. Competitive Advantage
+
+Compared to traditional apps:
+
+* AI-based planning (not available in competitors)
+* Context-aware modes (Trip, Party, Flatmate)
+* Indian user-focused experience
+* Real-world problem solving (not just calculations)
+
+---
+
+## 10. Summary
+
+KharchaX aims to become the go-to platform for group expense management by combining simplicity, intelligence, and real-world usability into one seamless experience.
+
+---

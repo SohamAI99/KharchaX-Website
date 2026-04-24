@@ -1,0 +1,316 @@
+# KharchaX – Tech Stack Document
+
+---
+
+## 1. Project Type
+
+**Application Type:**
+Full-stack web application (future-ready for mobile app)
+
+**Core Functionality:**
+
+* Group expense tracking
+* Smart expense splitting
+* AI-powered budget planning
+* Real-time balance calculation
+
+---
+
+## 2. Frontend
+
+### Framework:
+
+* React.js (latest stable version)
+
+### Meta Framework:
+
+* Next.js 14+
+
+### Reason:
+
+* Fast performance
+* Built-in routing
+* SEO support
+* Server-side rendering (SSR)
+* Easy deployment with Vercel
+
+---
+
+## 3. Styling
+
+### Primary:
+
+* Tailwind CSS
+
+### UI Components:
+
+* shadcn/ui
+
+### Icons:
+
+* Lucide React
+
+### Reason:
+
+* Fast UI development
+* Clean modern design
+* Highly customizable
+* Works perfectly with React
+
+---
+
+## 4. State Management
+
+### Tools:
+
+* Zustand (lightweight state management)
+
+### Usage:
+
+* Global state (user, groups, balances)
+
+### Reason:
+
+* Simpler than Redux
+* Easy to scale
+* Minimal boilerplate
+
+---
+
+## 5. Backend
+
+### Option 1 (Recommended for MVP):
+
+* Next.js API Routes
+
+### Option 2 (Advanced later):
+
+* Node.js + Express.js
+
+### Reason:
+
+* Simple setup with Next.js
+* No need for separate backend initially
+* Easy to scale later
+
+---
+
+## 6. Database
+
+### Primary:
+
+* MongoDB (via MongoDB Atlas)
+
+### ORM:
+
+* Mongoose
+
+### Reason:
+
+* Flexible schema (good for evolving app)
+* Easy integration with Node.js
+* Scalable
+
+---
+
+## 7. Authentication
+
+### Tool:
+
+* NextAuth.js
+
+### Features:
+
+* Google login
+* Email login
+
+### Reason:
+
+* Easy setup
+* Secure
+* Works well with Next.js
+
+---
+
+## 8. AI Integration
+
+### API:
+
+* OpenAI API (or Gemini API as alternative)
+
+### Usage:
+
+* Budget suggestions
+* Expense optimization
+* Alerts
+
+### Example:
+
+* Input: “10 people, ₹2000 budget”
+* Output: Suggested plan
+
+---
+
+## 9. Core Libraries
+
+### Forms:
+
+* React Hook Form
+* Zod (validation)
+
+### Animations:
+
+* Framer Motion
+
+### Date Handling:
+
+* date-fns
+
+### Utility:
+
+* clsx (conditional classes)
+
+---
+
+## 10. Key Features Implementation
+
+### Expense Calculation:
+
+* Custom logic (pure JavaScript)
+* Handles:
+
+  * Equal split
+  * Balance tracking
+  * Settlement
+
+---
+
+### Real-Time Updates:
+
+* Initially:
+
+  * Client-side updates
+
+* Future:
+
+  * WebSockets (Socket.io)
+
+---
+
+## 11. Deployment & Hosting
+
+### Platform:
+
+* Vercel
+
+### Reason:
+
+* Best for Next.js
+* Easy deployment
+* Free tier available
+
+---
+
+### Domain:
+
+* Custom domain (later)
+
+---
+
+## 12. Storage
+
+### Option:
+
+* Cloudinary (for images, future)
+
+### Usage:
+
+* Profile images
+* Receipts (future feature)
+
+---
+
+## 13. Analytics
+
+### Tool:
+
+* Google Analytics
+
+### Usage:
+
+* Track users
+* Track feature usage
+
+---
+
+## 14. Performance Optimization
+
+* Lazy loading components
+* Code splitting
+* Image optimization (Next.js Image)
+* API caching
+
+---
+
+## 15. Security
+
+* Authentication (NextAuth)
+* Input validation (Zod)
+* API protection
+* Environment variables for secrets
+
+---
+
+## 16. Development Tools
+
+### Code Editor:
+
+* VS Code
+
+### Extensions:
+
+* Tailwind CSS IntelliSense
+* Prettier
+* ESLint
+
+---
+
+### Version Control:
+
+* Git + GitHub
+
+---
+
+## 17. Folder Structure (Basic)
+
+* /app (Next.js app router)
+* /components
+* /lib
+* /hooks
+* /api
+* /models
+* /utils
+
+---
+
+## 18. Future Scalability
+
+* Move backend to separate server
+* Add mobile app (React Native)
+* Add payment integration (UPI APIs)
+* Add notifications
+
+---
+
+## 19. Summary
+
+This tech stack is designed to be:
+
+* Beginner-friendly
+* Scalable
+* Modern (2025-ready)
+* Fast to build MVP
+
+It balances simplicity (for quick development) with scalability (for future growth).
+
+---
