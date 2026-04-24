@@ -36,13 +36,13 @@ export function BalanceCard({ title, amount, type, items = [] }: BalanceCardProp
       <h2 className={`text-3xl font-bold tracking-tight ${getTextColor()}`}>₹{amount.toLocaleString()}</h2>
       
       {items.length > 0 && (
-        <div className="mt-4 space-y-3">
+        <div className="mt-5 space-y-2 border-t border-[var(--card-border)] pt-4">
           {items.map((item, idx) => (
             <div key={idx} className="flex justify-between items-center text-sm">
-              <span className="text-foreground">
-                {type === "debt" ? "To" : "From"} {item.name}
+              <span className="text-text-secondary">
+                {type === "debt" ? "To" : "From"} <span className="font-medium text-foreground">{item.name}</span>
               </span>
-              <span className="font-semibold">₹{item.amount.toLocaleString()}</span>
+              <span className="font-medium text-foreground tracking-wide">₹{item.amount.toLocaleString()}</span>
             </div>
           ))}
         </div>

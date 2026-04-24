@@ -1,30 +1,37 @@
 @import "tailwindcss";
 
 :root {
-  --background: #F8F9FB; /* Light Mode Background */
-  --foreground: #1F2937; /* Primary Text */
-  --text-secondary: #6B7280;
+  --background: #FAFAFA; /* Minimal light gray/white */
+  --foreground: #111827; /* Slate 900 */
+  --text-secondary: #6B7280; /* Gray 500 */
+  --card-bg: #FFFFFF;
+  --card-border: #E5E7EB; /* Gray 200 */
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-text-secondary: var(--text-secondary);
+  --color-card-bg: var(--card-bg);
+  --color-card-border: var(--card-border);
   
-  --color-primary: #6C5CE7;
-  --color-secondary: #00B894;
-  --color-debt: #FF4D4F;
-  --color-warning: #FDCB6E;
-  --color-info: #0984E3;
+  --color-primary: #4F46E5; /* Indigo 600 - Professional SaaS accent */
+  --color-primary-hover: #4338CA;
+  --color-secondary: #10B981; /* Emerald 500 */
+  --color-debt: #EF4444; /* Red 500 */
+  --color-warning: #F59E0B; /* Amber 500 */
+  --color-info: #3B82F6; /* Blue 500 */
 
   --font-sans: var(--font-inter), sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0F172A; /* Dark Mode Background */
-    --foreground: #FFFFFF; /* White Text */
-    --text-secondary: #9CA3AF; /* Lighter secondary text for dark mode */
+    --background: #0A0A0A; /* Linear-style true black/dark gray */
+    --foreground: #F9FAFB; /* Gray 50 */
+    --text-secondary: #9CA3AF; /* Gray 400 */
+    --card-bg: #171717; /* Neutral 900 */
+    --card-border: #262626; /* Neutral 800 */
   }
 }
 
@@ -32,4 +39,6 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }

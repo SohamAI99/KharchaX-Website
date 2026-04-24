@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { BalanceCard } from "@/components/shared/BalanceCard";
@@ -10,50 +12,54 @@ import { ActivityRow } from "@/components/shared/ActivityRow";
 import { calculateSettlements, getUserDashboardBalances } from "@/utils/expenseLogic";
 
 export default function Dashboard() {
+  const { data: session, status } = useSession();
+  const router = useRouter();
+
   const [group, setGroup] = useState<any>(null);
   const [expenses, setExpenses] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
-
-  // Since we have no auth, we temporally identify as Soham (index 0) for the dashboard view
-  const [currentUserId, setCurrentUserId] = useState<string>("");
-
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    async function fetchData() {
-      try {
-        setError(null);
-        const res = await fetch("/api/groups");
-        
-        if (!res.ok) throw new Error("Failed to fetch groups");
-        
-        const allGroups = await res.json();
-        
-        if (allGroups && allGroups.length > 0) {
-          const activeGroup = allGroups[0];
-          setGroup(activeGroup);
-          
-          if (activeGroup.members?.length > 0) {
-            setCurrentUserId(activeGroup.members[0]._id);
-          }
-
-          const exRes = await fetch(`/api/groups/${activeGroup._id}/expenses`);
-          if (!exRes.ok) throw new Error("Failed to fetch expenses");
-          
-          const groupExpenses = await exRes.json();
-          setExpenses(groupExpenses);
-        }
-      } catch (err: any) {
-        console.error("Dashboard Fetch Error:", err);
-        setError("We couldn't load your dashboard data. Please check your connection.");
-      } finally {
-        setLoading(false);
-      }
+    if (status === "unauthenticated") {
+      router.push("/");
+      return;
     }
-    fetchData();
-  }, []);
 
-  if (loading) {
+    if (status === "authenticated") {
+      async function fetchData() {
+        try {
+          setError(null);
+          const res = await fetch("/api/groups");
+          
+          if (!res.ok) throw new Error("Failed to fetch groups");
+          
+          const allGroups = await res.json();
+          
+          if (allGroups && allGroups.length > 0) {
+            // For MVP: We just grab the first group they are a member of.
+            // A more advanced app would list multiple groups.
+            const activeGroup = allGroups[0];
+            setGroup(activeGroup);
+
+            const exRes = await fetch(`/api/groups/${activeGroup._id}/expenses`);
+            if (!exRes.ok) throw new Error("Failed to fetch expenses");
+            
+            const groupExpenses = await exRes.json();
+            setExpenses(groupExpenses);
+          }
+        } catch (err: any) {
+          console.error("Dashboard Fetch Error:", err);
+          setError("We couldn't load your dashboard data. Please check your connection.");
+        } finally {
+          setLoading(false);
+        }
+      }
+      fetchData();
+    }
+  }, [status, router]);
+
+  if (status === "loading" || loading) {
     return (
       <div className="flex flex-col items-center justify-center py-32 space-y-4 text-text-secondary animate-in fade-in">
         <div className="w-12 h-12 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
@@ -90,6 +96,7 @@ export default function Dashboard() {
   const totalSpent = expenses.reduce((acc, curr) => acc + curr.amount, 0);
 
   // --- ALGORTIHM MAGIC ---
+  const currentUserId = (session?.user as any)?.id || "";
   const globalSettlements = calculateSettlements(expenses, group.members);
   const myBalances = getUserDashboardBalances(currentUserId, globalSettlements);
 
@@ -106,7 +113,7 @@ export default function Dashboard() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-bold">Dashboard</h1>
+          <h1 className="text-3xl font-bold tracking-tight text-foreground">Dashboard</h1>
           <p className="text-text-secondary mt-1">Welcome back! Here's your financial overview.</p>
         </div>
         <Button className="w-full sm:w-auto flex items-center justify-center gap-2">
@@ -117,12 +124,12 @@ export default function Dashboard() {
 
       {/* Top Section */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <Card>
-          <p className="text-text-secondary font-medium text-sm mb-1">Total Group Expenses</p>
-          <h2 className="text-4xl font-bold tracking-tight">₹{totalSpent.toLocaleString()}</h2>
+        <Card className="flex flex-col justify-center">
+          <p className="text-text-secondary font-medium text-sm mb-1 uppercase tracking-wider">Total Group Expenses</p>
+          <h2 className="text-4xl font-bold tracking-tight text-foreground">₹{totalSpent.toLocaleString()}</h2>
           <div className="mt-4 flex flex-wrap items-center gap-2 text-sm">
-            <span className="bg-secondary/10 text-secondary px-2 py-1 rounded-md font-medium">{group.mode} Mode Active</span>
-            <span className="text-text-secondary">{group.name}</span>
+            <span className="bg-primary/10 text-primary border border-primary/20 px-2.5 py-1 rounded-md font-medium">{group.mode} Mode Active</span>
+            <span className="text-text-secondary font-medium">{group.name}</span>
           </div>
         </Card>
 
@@ -152,11 +159,11 @@ export default function Dashboard() {
 
       {/* Bottom Section: Recent Activity */}
       <div>
-        <h3 className="text-xl font-bold mb-4">Recent Activity</h3>
+        <h3 className="text-xl font-bold tracking-tight mb-4 text-foreground">Recent Activity</h3>
         <Card className="p-0 overflow-hidden">
-          <div className="divide-y divide-border/50">
+          <div className="flex flex-col">
             {expenses.length === 0 ? (
-               <div className="p-6 text-center text-text-secondary">No recent expenses found.</div>
+               <div className="p-8 text-center text-text-secondary text-sm">No recent expenses found.</div>
             ) : (
               expenses.map((expense) => (
                 <ActivityRow 
