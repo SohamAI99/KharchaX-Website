@@ -1,13 +1,15 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { use, useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import Link from "next/link";
 
-export default function InvitePage({ params }: { params: { code: string } }) {
+export default function InvitePage({ params }: { params: Promise<{ code: string }> }) {
+  const unwrappedParams = use(params);
+  const code = unwrappedParams.code;
   const { data: session, status } = useSession();
   const router = useRouter();
   
@@ -20,7 +22,7 @@ export default function InvitePage({ params }: { params: { code: string } }) {
   useEffect(() => {
     async function fetchGroupDetails() {
       try {
-        const res = await fetch(`/api/invite/${params.code}`);
+        const res = await fetch(`/api/invite/${code}`);
         const data = await res.json();
         
         if (!res.ok) {
@@ -36,7 +38,7 @@ export default function InvitePage({ params }: { params: { code: string } }) {
     }
     
     fetchGroupDetails();
-  }, [params.code]);
+  }, [code]);
 
   const handleJoin = async () => {
     if (status === "unauthenticated") {
@@ -48,7 +50,7 @@ export default function InvitePage({ params }: { params: { code: string } }) {
     setError("");
 
     try {
-      const res = await fetch(`/api/invite/${params.code}`, { method: "POST" });
+      const res = await fetch(`/api/invite/${code}`, { method: "POST" });
       const data = await res.json();
 
       if (!res.ok) {

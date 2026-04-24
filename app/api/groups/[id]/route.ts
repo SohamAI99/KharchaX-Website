@@ -1,9 +1,9 @@
-import { NextResponse } from "next/server";
+import { NextResponse, NextRequest } from "next/server";
 import connectToDatabase from "@/lib/mongodb";
 import Group from "@/models/Group";
 import User from "@/models/User";
 
-export async function GET(req: Request, context: { params: Promise<{ id: string }> }) {
+export async function GET(req: NextRequest, context: { params: Promise<{ id: string }> }) {
   try {
     await connectToDatabase();
     const { id } = await context.params;

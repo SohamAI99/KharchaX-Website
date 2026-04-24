@@ -1,16 +1,17 @@
-import { NextResponse } from "next/server";
+import { NextResponse, NextRequest } from "next/server";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import connectToDatabase from "@/lib/mongodb";
 import Group from "@/models/Group";
 
 // GET: Fetch basic group details by invite code (public)
-export async function GET(req: Request, { params }: { params: { code: string } }) {
+export async function GET(req: NextRequest, context: { params: Promise<{ code: string }> }) {
   try {
+    const { code } = await context.params;
     await connectToDatabase();
     
     // We only select safe fields for public viewing
-    const group = await Group.findOne({ inviteCode: params.code })
+    const group = await Group.findOne({ inviteCode: code })
       .populate("createdBy", "name")
       .select("name members createdBy");
 
@@ -31,8 +32,9 @@ export async function GET(req: Request, { params }: { params: { code: string } }
 }
 
 // POST: Join the group using the invite code (requires auth)
-export async function POST(req: Request, { params }: { params: { code: string } }) {
+export async function POST(req: NextRequest, context: { params: Promise<{ code: string }> }) {
   try {
+    const { code } = await context.params;
     const session = await getServerSession(authOptions);
     if (!session || !(session.user as any).id) {
       return NextResponse.json({ error: "Unauthorized. Please sign in to join." }, { status: 401 });
@@ -40,7 +42,7 @@ export async function POST(req: Request, { params }: { params: { code: string } 
 
     await connectToDatabase();
     
-    const group = await Group.findOne({ inviteCode: params.code });
+    const group = await Group.findOne({ inviteCode: code });
 
     if (!group) {
       return NextResponse.json({ error: "Invalid or expired invite code." }, { status: 404 });

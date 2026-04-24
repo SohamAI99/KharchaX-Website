@@ -1,10 +1,10 @@
-import { NextResponse } from "next/server";
+import { NextResponse, NextRequest } from "next/server";
 import connectToDatabase from "@/lib/mongodb";
 import Expense from "@/models/Expense";
 import User from "@/models/User";
 import { checkRateLimit } from "@/utils/rateLimit";
 
-export async function GET(req: Request, context: { params: Promise<{ id: string }> }) {
+export async function GET(req: NextRequest, context: { params: Promise<{ id: string }> }) {
   try {
     const ip = req.headers.get("x-forwarded-for") || "127.0.0.1";
     if (!checkRateLimit(ip, 30, 60000)) return NextResponse.json({ error: "Too many requests" }, { status: 429 });
@@ -28,7 +28,7 @@ export async function GET(req: Request, context: { params: Promise<{ id: string 
   }
 }
 
-export async function POST(req: Request, context: { params: Promise<{ id: string }> }) {
+export async function POST(req: NextRequest, context: { params: Promise<{ id: string }> }) {
   try {
     const ip = req.headers.get("x-forwarded-for") || "127.0.0.1";
     if (!checkRateLimit(ip, 30, 60000)) return NextResponse.json({ error: "Too many requests" }, { status: 429 });
